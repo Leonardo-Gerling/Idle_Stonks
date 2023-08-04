@@ -1,13 +1,12 @@
 import { ReactElement, useState } from "react";
 
 interface ShopTileProps {
-    className?: string,
     itemName: string
     initialPrice: number
     setPriceMethod: Function
 }
 
-export default function ShopTile({ className, itemName, initialPrice, setPriceMethod }: ShopTileProps): ReactElement {
+export default function ShopTile({ itemName, initialPrice, setPriceMethod }: ShopTileProps): ReactElement {
     const [count, setCount] = useState(0);
     const [price, setPrice] = useState(initialPrice);
 

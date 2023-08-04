@@ -6,7 +6,7 @@ export default function Game(): ReactElement {
     const [apples, setApples] = useState(0)
 
     return (
-        <>  
+        <>
             <Shop/>
 
             <div aria-label="mid-section" className="select-none grid grid-cols-2 mx-auto w-[70rem] p-40 shadow-md rounded-b-xl">
