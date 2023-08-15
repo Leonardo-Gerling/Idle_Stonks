@@ -1,17 +1,15 @@
 import { createContext, useState, ReactNode } from "react"
 
+import ItemName from "types/item_name" /* @types funktioniert nicht?? */
+
 const ShopContext = createContext({})
-
-const items = ["farmer", "backyardTree", "appleFarm"] as const
-
-type ItemName = typeof items[number]
 
 export const ShopProvider = ({children}: {children: ReactNode}) => {
     const [counts, setCounts] = useState<{[key in ItemName]: number}>(
         {
-            "farmer": 0,
-            "backyardTree": 0,
-            "appleFarm": 0
+            "Farmer": 0,
+            "Backyard Tree": 0,
+            "Apple Farm": 0
         }
     )
 
