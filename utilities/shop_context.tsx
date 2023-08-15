@@ -18,11 +18,11 @@ export const ShopProvider = ({children}: {children: ReactNode}) => {
     }
 
     return (
-        <ShopContext.Provider value={{ counts, setCounts, increment }}>
+        <ShopContext.Provider value={{ counts, increment }}>
             {children}
         </ShopContext.Provider>
     )
 }
 
 
-export default ShopProvider
+export default ShopContext
