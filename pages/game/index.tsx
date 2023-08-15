@@ -1,5 +1,5 @@
 import { ReactElement, useState } from "react";
-import apple_tree from "../../public/apple_tree.png";
+import apple_tree from "@public/apple_tree.png";
 import Shop from "@components/game/shop";
 
 export default function Game(): ReactElement {

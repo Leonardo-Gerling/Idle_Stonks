@@ -1,18 +1,18 @@
 import { ReactElement, useState } from "react";
 
+import type { ShopItem } from "@utilities/shop_items";
+
 interface ShopTileProps {
-    itemName: string
-    initialPrice: number
-    setPriceMethod: Function
+    shopItem: ShopItem
 }
 
-export default function ShopTile({ itemName, initialPrice, setPriceMethod }: ShopTileProps): ReactElement {
+export default function ShopTile({ shopItem }: ShopTileProps): ReactElement {
     const [count, setCount] = useState(0);
-    const [price, setPrice] = useState(initialPrice);
+    const [price, setPrice] = useState(shopItem.initialPrice);
 
     return (
-        <button className="h-24" onClick={() => { setCount(count + 1); setPrice(setPriceMethod(price)) }}>
-            {itemName} costs {price}. You currently have {count}.
+        <button className="h-24" onClick={() => { setCount(count + 1); setPrice(shopItem.setPriceMethod(price)) }}>
+            {shopItem.itemName} costs {price}. You currently have {count}.
         </button>
     )
 }

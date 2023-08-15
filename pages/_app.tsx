@@ -1,4 +1,4 @@
-import '@/styles/globals.css'
+import '@styles/globals.css'
 import type { AppProps } from 'next/app'
 
 import ShopProvider from "@utilities/shop_context";
