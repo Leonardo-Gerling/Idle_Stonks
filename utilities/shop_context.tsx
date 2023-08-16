@@ -1,17 +1,21 @@
-import { createContext, useState, ReactNode } from "react"
+import { createContext, useState, ReactNode, Dispatch, SetStateAction } from "react"
 
-import ItemName from "types/item_name" /* @types funktioniert nicht?? */
+import ItemName from "types/item_name"
+import ShopItemCounts from "types/shop_item_counts"
 
-const ShopContext = createContext({})
+const defaultCounts: ShopItemCounts = {
+    "Farmer": 0,
+    "Backyard Tree": 0,
+    "Apple Farm": 0
+}
+
+const ShopContext = createContext<{counts: ShopItemCounts, increment: (item: ItemName) => void}>({
+    counts: defaultCounts,
+    increment: () => {}
+})
 
 export const ShopProvider = ({children}: {children: ReactNode}) => {
-    const [counts, setCounts] = useState<{[key in ItemName]: number}>(
-        {
-            "Farmer": 0,
-            "Backyard Tree": 0,
-            "Apple Farm": 0
-        }
-    )
+    const [counts, setCounts] = useState<ShopItemCounts>(defaultCounts)
 
     const increment = (item: ItemName) => {
         setCounts({...counts, [item]: counts[item] + 1})
