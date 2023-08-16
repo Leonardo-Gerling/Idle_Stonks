@@ -3,29 +3,33 @@ import ItemName from "types/item_name"
 export class ShopItem {
     readonly itemName: ItemName
     readonly initialPrice: number
-    readonly getPrice: (price: number) => number
+    readonly countMultiplier: number
 
-    constructor(itemName: ItemName, initialPrice: number, getPrice: (price: number, initialPrice: number) => number) {
+    constructor({ itemName, initialPrice, countMultiplier }: { itemName: ItemName, initialPrice: number, countMultiplier: number }) {
         this.itemName = itemName
         this.initialPrice = initialPrice
-        this.getPrice = (price: number) => getPrice(price, this.initialPrice) 
+        this.countMultiplier = countMultiplier
+    }
+
+    getPrice(count: number): number { 
+        return this.initialPrice + count * this.countMultiplier 
     }
 }
 
-export const farmer = new ShopItem(
-    "Farmer",
-    15,
-    (count, initialPrice) => initialPrice + count * 5
-)
+export const farmer = new ShopItem({
+    itemName: "Farmer",
+    initialPrice: 15,
+    countMultiplier: 5
+})
 
-export const backyardTree = new ShopItem(
-    "Backyard Tree",
-    300,
-    (count, initialPrice) => initialPrice + count * 20
-)
+export const backyardTree = new ShopItem({
+    itemName: "Backyard Tree",
+    initialPrice: 300,
+    countMultiplier: 20
+})
 
-export const appleFarm = new ShopItem(
-    "Apple Farm",
-    7000,
-    (count, initialPrice) => initialPrice + count * 300
-)
+export const appleFarm = new ShopItem({
+    itemName: "Apple Farm",
+    initialPrice: 7000,
+    countMultiplier: 300
+})
