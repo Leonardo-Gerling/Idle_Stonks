@@ -8,10 +8,10 @@ interface ShopTileProps {
 }
 
 export default function ShopTile({ shopItem }: ShopTileProps): ReactElement {
-    const {counts, increment} = useContext(ShopContext)
+    const {counts, incrementItem} = useContext(ShopContext)
 
     return (
-        <button className="h-24" onClick={() => { increment(shopItem.itemName) }}>
+        <button className="h-24" onClick={() => { incrementItem(shopItem.itemName) }}>
             {shopItem.itemName} costs {shopItem.getPrice(counts[shopItem.itemName])}. You currently have {counts[shopItem.itemName]}.
         </button>
     )

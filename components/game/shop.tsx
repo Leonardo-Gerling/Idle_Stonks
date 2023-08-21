@@ -5,7 +5,7 @@ import BoughtView from "@components/game/bought_view"
 
 
 export default function Shop(): ReactElement {
-    const [showBuyView, setShowBuyView] = useState(true)
+    const [showBuyView, setShowBuyView] = useState<boolean>(true)
 
     return (
         <div>
