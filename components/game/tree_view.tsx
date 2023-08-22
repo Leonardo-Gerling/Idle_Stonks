@@ -2,6 +2,7 @@ import { ReactElement, useContext } from "react"
 
 import apple_tree from "@public/apple_tree.png"
 import ShopContext from "@utilities/shop_context"
+import fixNumber from "@utilities/fix_number"
 
 export default function TreeView(): ReactElement {
     const {apples, changePerClick, setApples} = useContext(ShopContext)
@@ -10,7 +11,7 @@ export default function TreeView(): ReactElement {
         <div aria-label="tree-view">
             <div className="mr-6">
                 <img className="h-96 w-96 cursor-pointer undraggable" 
-                        onClick={() => setApples(+(apples + changePerClick).toFixed(2))}
+                        onClick={() => setApples(fixNumber(apples + changePerClick))}
                         src={apple_tree.src}
                 />
                 
