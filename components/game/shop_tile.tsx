@@ -1,4 +1,4 @@
-import { ReactElement, useContext } from "react";
+import { ReactElement, useContext } from "react"
 
 import type { ShopItem } from "@utilities/shop_items"
 import ShopContext from "@utilities/shop_context"
