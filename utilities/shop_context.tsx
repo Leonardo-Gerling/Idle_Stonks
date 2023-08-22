@@ -1,7 +1,6 @@
 import { createContext, useState, ReactNode } from "react"
 
-import { ItemName } from "types"
-import { ShopItemCounts } from "types"
+import { ItemName, ShopItemCounts } from "types"
 import { farmer, backyardTree, appleFarm } from "@utilities/shop_items"
 
 const defaultCounts: ShopItemCounts = {
