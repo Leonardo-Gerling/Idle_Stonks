@@ -6,8 +6,8 @@ import MidSection from "@components/game/mid_section"
 export default function Game(): ReactElement {
     return (
         <div>
-            <Shop/>
-            <MidSection/>
+            <Shop />
+            <MidSection />
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import ItemName from "types/item_name"
+import { ItemName } from "types"
 
 export class ShopItem {
     readonly itemName: ItemName
@@ -10,7 +10,7 @@ export class ShopItem {
     constructor(
         { itemName, initialPrice, countMultiplier, changePerClick, changePerSecond }: 
         { itemName: ItemName, initialPrice: number, countMultiplier: number, changePerClick: number, changePerSecond: number }
-        ) {
+    ) {
         this.itemName = itemName
         this.initialPrice = initialPrice
         this.countMultiplier = countMultiplier

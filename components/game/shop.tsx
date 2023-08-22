@@ -8,10 +8,10 @@ export default function Shop(): ReactElement {
     const [showBuyView, setShowBuyView] = useState<boolean>(true)
 
     return (
-        <div>
+        <section aria-label="shop">
             <button onClick={() => { setShowBuyView(true) }}>Buy</button>
             <button onClick={() => { setShowBuyView(false) }}>Bought</button>
             {showBuyView ? <BuyView /> : <BoughtView />}
-        </div>
+        </section>
     )
 }

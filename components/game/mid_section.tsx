@@ -1,29 +1,13 @@
-import { ReactElement, useContext } from "react"
+import { ReactElement } from "react"
 
-import apple_tree from "@public/apple_tree.png"
-import ShopContext from "@utilities/shop_context"
+import PassiveChangeView from "@components/game/passive_change_view"
+import TreeView from "@components/game/tree_view"
 
 export default function MidSection(): ReactElement {
-    const {apples, changePerClick, setApples} = useContext(ShopContext)
-
     return (
-        <div aria-label="mid-section" className="select-none grid grid-cols-2 mx-auto w-[70rem] p-40 shadow-md rounded-b-xl">
-            <div className="mr-6">
-                <img className="h-96 w-96 cursor-pointer undraggable" 
-                        onClick={() => setApples(+(apples + changePerClick).toFixed(2))} /* toFixed() prevents floating point errors */
-                        src={apple_tree.src}
-                />
-                
-                <p className="text-white bg-[#76b02a] mt-10 text-center text-4xl py-2">{apples} Apples</p>
-            </div>
-
-            <div className="grid grid-rows-5 divide-y divide-dotted ml-6">
-                <div>Mid</div>
-                <div>Mid</div>
-                <div>Mid</div>
-                <div>Mid</div>
-                <div>Mid</div>
-            </div>
-        </div>
+        <section aria-label="mid-section" className="select-none grid grid-cols-2 mx-auto w-[70rem] p-40 shadow-md rounded-b-xl">
+            <TreeView />
+            <PassiveChangeView />
+        </section>
     )
 }
