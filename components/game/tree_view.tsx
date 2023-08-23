@@ -4,6 +4,26 @@ import apple_tree from "@public/apple_tree.png"
 import ShopContext from "@utilities/shop_context"
 import fixNumber from "@utilities/fix_number"
 
+let start: number | undefined
+let previousTimeStamp: number | undefined
+
+function calculateAppleCount(timeStamp: number): void {
+    const {apples, changePerSecond, setApples} = useContext(ShopContext)
+
+    if (start === undefined) {
+        start = timeStamp
+    }
+
+    const elapsed = timeStamp - start
+    const change = changePerSecond * (elapsed - (previousTimeStamp ?? 0)) / 1000
+
+    previousTimeStamp = timeStamp
+
+    setApples(fixNumber(apples + change))
+
+    window.requestAnimationFrame(calculateAppleCount)
+}
+
 export default function TreeView(): ReactElement {
     const {apples, changePerClick, setApples} = useContext(ShopContext)
 
@@ -19,3 +39,5 @@ export default function TreeView(): ReactElement {
         </div>
     )
 }
+
+window.requestAnimationFrame(calculateAppleCount)
