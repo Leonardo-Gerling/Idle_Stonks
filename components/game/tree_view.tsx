@@ -3,12 +3,12 @@ import { ReactElement, useContext } from "react"
 import apple_tree from "@public/apple_tree.png"
 import ShopContext from "@utilities/shop_context"
 import fixNumber from "@utilities/fix_number"
-import useGameLoop from "@utilities/use_game_loop"
+import useAppleGame from "@utilities/use_apple_game"
 
 export default function TreeView(): ReactElement {
     const {apples, changePerClick, setApples} = useContext(ShopContext)
 
-    useGameLoop(() => {})
+    useAppleGame()
 
     return (
         <div aria-label="tree-view" className="mr-6">
