@@ -1,4 +1,4 @@
-import { ItemName } from "types"
+import type { ItemName } from "types"
 
 export class ShopItem {
     readonly itemName: ItemName

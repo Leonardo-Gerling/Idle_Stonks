@@ -1,7 +1,6 @@
 import { createContext, useState, ReactNode } from "react"
 
-import { ShopItemCounts } from "types"
-import type { ShopItem } from "@utilities/shop_items"
+import type { ShopItemCounts, ShopItem } from "types"
 
 const defaultCounts: ShopItemCounts = {
     "Farmer": 0,

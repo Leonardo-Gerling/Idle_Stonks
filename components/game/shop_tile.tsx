@@ -1,6 +1,6 @@
 import { ReactElement, useContext } from "react"
 
-import type { ShopItem } from "@utilities/shop_items"
+import type { ShopItem } from "types"
 import ShopContext from "@utilities/shop_context"
 
 interface ShopTileProps {
@@ -14,7 +14,7 @@ export default function ShopTile({ shopItem }: ShopTileProps): ReactElement {
         <button className="h-24" onClick={() => { 
             if (apples >= shopItem.getPrice(counts[shopItem.itemName])) {
                 setApples(apples - shopItem.getPrice(counts[shopItem.itemName]))
-                incrementItem(shopItem.itemName)
+                incrementItem(shopItem)
             }
         }}>
             {shopItem.itemName} costs {shopItem.getPrice(counts[shopItem.itemName])}. You currently have {counts[shopItem.itemName]}.
