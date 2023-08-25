@@ -25,10 +25,10 @@ const ShopContext = createContext<{
 })
 
 export const ShopProvider = ({children}: {children: ReactNode}) => {
-    const [counts, setCounts] = useState<ShopItemCounts>(defaultCounts)
-    const [apples, setApples] = useState<number>(0)
-    const [changePerSecond, setChangePerSecond] = useState<number>(0)
-    const [changePerClick, setChangePerClick] = useState<number>(1)
+    const [counts, setCounts] = useState(defaultCounts)
+    const [apples, setApples] = useState(0)
+    const [changePerSecond, setChangePerSecond] = useState(0)
+    const [changePerClick, setChangePerClick] = useState(1)
 
     const incrementItem = (item: ShopItem) => {
         setCounts({...counts, [item.itemName]: counts[item.itemName] + 1})
