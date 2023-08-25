@@ -1,8 +1,9 @@
 import { ReactElement, useContext } from "react"
 
 import ShopContext from "@utilities/shop_context"
-import fixNumber from "@utilities/fix_number"
 import { farmer, backyardTree, appleFarm } from "@utilities/shop_items"
+
+const fixNumber = (num: number) => num.toFixed(2)
 
 export default function PassiveChangeView(): ReactElement {
     const {counts, changePerSecond} = useContext(ShopContext)

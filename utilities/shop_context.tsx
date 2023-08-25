@@ -1,7 +1,7 @@
 import { createContext, useState, ReactNode } from "react"
 
-import { ItemName, ShopItemCounts } from "types"
-import { farmer, backyardTree, appleFarm } from "@utilities/shop_items"
+import { ShopItemCounts } from "types"
+import type { ShopItem } from "@utilities/shop_items"
 
 const defaultCounts: ShopItemCounts = {
     "Farmer": 0,
@@ -14,7 +14,7 @@ const ShopContext = createContext<{
     apples: number,
     changePerSecond: number,
     changePerClick: number,
-    incrementItem: (item: ItemName) => void
+    incrementItem: (item: ShopItem) => void
     setApples: (apples: number | ((apples: number) => number)) => void
 }>({
     counts: defaultCounts,
@@ -31,25 +31,11 @@ export const ShopProvider = ({children}: {children: ReactNode}) => {
     const [changePerSecond, setChangePerSecond] = useState<number>(0)
     const [changePerClick, setChangePerClick] = useState<number>(1)
 
-    const incrementItem = (item: ItemName) => {
-        setCounts({...counts, [item]: counts[item] + 1})
+    const incrementItem = (item: ShopItem) => {
+        setCounts({...counts, [item.itemName]: counts[item.itemName] + 1})
 
-        switch (item) {
-            case "Farmer":
-                setChangePerSecond(changePerSecond + farmer.changePerSecond)
-                setChangePerClick(changePerClick + farmer.changePerClick)
-                break
-
-            case "Backyard Tree":
-                setChangePerSecond(changePerSecond + backyardTree.changePerSecond)
-                setChangePerClick(changePerClick + backyardTree.changePerClick)
-                break
-                
-            case "Apple Farm":
-                setChangePerSecond(changePerSecond + appleFarm.changePerSecond)
-                setChangePerClick(changePerClick + appleFarm.changePerClick)
-                break
-        }
+        setChangePerSecond(changePerSecond + item.changePerSecond)
+        setChangePerClick(changePerClick + item.changePerClick)
     }
 
     return (
