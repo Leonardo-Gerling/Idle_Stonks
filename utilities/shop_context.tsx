@@ -14,7 +14,7 @@ const ShopContext = createContext<{
     changePerSecond: number,
     changePerClick: number,
     incrementItem: (item: ShopItem) => void
-    setApples: (apples: number | ((apples: number) => number)) => void
+    setApples: (apples: number) => void
 }>({
     counts: defaultCounts,
     apples: 0,
