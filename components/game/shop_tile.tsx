@@ -11,7 +11,7 @@ function BuyTile({ shopItem }: InnerTileProps): ReactElement {
     const {counts, apples, setApples, incrementItem} = useContext(ShopContext)
 
     return (
-        <button aria-label={"Buy " + shopItem.itemName} onClick={() => { 
+        <button aria-label={`Buy ${shopItem.itemName}`} onClick={() => { 
             if (apples >= shopItem.getPrice(counts[shopItem.itemName])) {
                 setApples(apples - shopItem.getPrice(counts[shopItem.itemName]))
                 incrementItem(shopItem)
@@ -26,7 +26,7 @@ function BoughtTile({ shopItem }: InnerTileProps): ReactElement {
     const {counts} = useContext(ShopContext)
 
     return (
-        <div aria-label={"Bought " + shopItem.itemName} className="overflow-x-scroll whitespace-nowrap">
+        <div aria-label={`Bought ${shopItem.itemName}`} className="overflow-x-scroll whitespace-nowrap">
             {shopItem.emoji.repeat(counts[shopItem.itemName])}
         </div>
     )
