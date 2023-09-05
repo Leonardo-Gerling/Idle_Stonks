@@ -1,4 +1,4 @@
-export function setCookie(name: string, value: string, expireMs?: number): void {
+export function setCookie(name: string, value: string | number, expireMs?: number): void {
     const date = new Date();
     date.setTime(date.getTime() + (expireMs ?? 31536000000)); // One year
 
