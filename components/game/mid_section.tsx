@@ -6,7 +6,7 @@ import { exportSave, importSave } from "@utilities/saves"
 import ShopContext from "@utilities/shop_context"
 
 export default function MidSection(): ReactElement {
-    const {updateDataCookie} = useContext(ShopContext)
+    const {fromJSON, updateDataCookie} = useContext(ShopContext)
 
     return (
         <section aria-label="mid-section" className="select-none grid grid-cols-2 mx-auto w-[70rem] p-40 shadow-md rounded-b-xl">
@@ -16,7 +16,9 @@ export default function MidSection(): ReactElement {
             }}>
                 export save
             </button>
-            <button onClick={() => importSave()}>
+            <button onClick={() => {
+                importSave(fromJSON)
+            }}>
                 import save
             </button>
             <TreeView />

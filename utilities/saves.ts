@@ -1,7 +1,11 @@
-import { getCookie, setCookie } from "@utilities/cookie"
+import Cookies from "js-cookie"
+import { isString } from "@utilities/typeguards"
+import { DefaultData } from "types"
 
 export function exportSave() {
-    const data = getCookie("data")
+    const data = Cookies.get("data")
+
+    if (!isString(data)) return
 
     const url = URL.createObjectURL(
         new Blob([data], { type: "text/plain" })
@@ -14,7 +18,7 @@ export function exportSave() {
     link.remove()
 }
 
-export function importSave() {
+export function importSave(fromJSON: (data: DefaultData) => void) {
     const input = document.createElement("input")
 
     input.type = "file"
@@ -26,11 +30,11 @@ export function importSave() {
 
         reader.onload = (e) => {
             const data = e.target?.result
-            console.log(data)
-            console.log(JSON.stringify(data))
-            setCookie("data", JSON.stringify(data)) 
-            setCookie("import-loaded", "false")
-            window.location.reload()
+
+            if (!isString(data)) return
+
+            Cookies.set("data", data)
+            fromJSON(JSON.parse(data))
         }
 
         reader.readAsText(input.files[0])
