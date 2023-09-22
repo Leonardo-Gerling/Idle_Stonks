@@ -14,7 +14,7 @@ function BuyTile({ shopItem }: InnerTileProps): ReactElement {
         <button aria-label={`Buy ${shopItem.itemName}`} onClick={() => { 
             if (apples >= shopItem.getPrice(counts[shopItem.itemName])) {
                 setApples(apples - shopItem.getPrice(counts[shopItem.itemName]))
-                incrementItem(shopItem)
+                incrementItem(shopItem, 1)
             }
         }}>
             {shopItem.itemName} costs {shopItem.getPrice(counts[shopItem.itemName])}. You currently have {counts[shopItem.itemName]}.

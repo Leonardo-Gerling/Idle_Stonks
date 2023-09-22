@@ -1,6 +1,6 @@
 import { createContext, useState, ReactNode } from "react"
 
-import type { ShopItemCounts, ShopItem } from "types"
+import type { ShopItemCounts, ShopItem, DefaultData } from "types"
 import { setCookie } from "@utilities/cookie"
 
 const defaultCounts: ShopItemCounts = {
@@ -14,9 +14,9 @@ const ShopContext = createContext<{
     apples: number,
     changePerSecond: number,
     changePerClick: number,
-    incrementItem: (item: ShopItem) => void,
+    incrementItem: (item: ShopItem, num: number) => void,
     setApples: (apples: number) => void,
-    updateCookie: () => void
+    updateDataCookie: () => void
 }>({
     counts: defaultCounts,
     apples: 0,
@@ -24,7 +24,7 @@ const ShopContext = createContext<{
     changePerClick: 1,
     incrementItem: () => {},
     setApples: () => {},
-    updateCookie: () => {}
+    updateDataCookie: () => {}
 })
 
 export const ShopProvider = ({children}: {children: ReactNode}) => {
@@ -33,15 +33,15 @@ export const ShopProvider = ({children}: {children: ReactNode}) => {
     const [changePerSecond, setChangePerSecond] = useState(0)
     const [changePerClick, setChangePerClick] = useState(1)
 
-    const incrementItem = (item: ShopItem) => {
-        setCounts({...counts, [item.itemName]: counts[item.itemName] + 1})
+    const incrementItem = (item: ShopItem, num: number) => {
+        setCounts({...counts, [item.itemName]: counts[item.itemName] + num})
 
-        setChangePerSecond(changePerSecond + item.changePerSecond)
-        setChangePerClick(changePerClick + item.changePerClick)
+        setChangePerSecond(changePerSecond + (item.changePerSecond * num))
+        setChangePerClick(changePerClick + (item.changePerClick * num))
     }
 
-    const updateCookie = () => {
-        const saveData = {
+    const updateDataCookie = () => {
+        const saveData: DefaultData = {
             "apples": apples,
             "counts": counts,
             "changePerClick": changePerClick,
@@ -54,7 +54,7 @@ export const ShopProvider = ({children}: {children: ReactNode}) => {
     }
 
     return (
-        <ShopContext.Provider value={{ counts, apples, changePerClick, changePerSecond, incrementItem, setApples, updateCookie }}>
+        <ShopContext.Provider value={{ counts, apples, changePerClick, changePerSecond, incrementItem, setApples, updateDataCookie }}>
             {children}
         </ShopContext.Provider>
     )

@@ -4,7 +4,7 @@ import ShopContext from "@utilities/shop_context"
 import useGameLoop from "@utilities/use_game_loop"
 
 export default function useSaveGameLoop(): void {
-    const {updateCookie} = useContext(ShopContext)
+    const {updateDataCookie} = useContext(ShopContext)
 
     const last = useRef(0)
     const now = useRef(0)
@@ -15,7 +15,7 @@ export default function useSaveGameLoop(): void {
         diff.current = now.current - last.current
         
         if (diff.current >= 300000) {
-            updateCookie()
+            updateDataCookie()
             last.current = now.current
         }
     })
