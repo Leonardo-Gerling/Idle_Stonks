@@ -2,6 +2,7 @@
 - 3D-Modell mit [THREE.js](https://threejs.org)
 - UI ändern
 - Upgrades
+- Nächste Stufe von jeweiligem Upgrade erst mit der Zeit freischalten
 
 
 

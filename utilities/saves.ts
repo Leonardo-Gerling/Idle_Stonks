@@ -1,4 +1,5 @@
 import Cookies from "js-cookie"
+
 import { isString } from "@utilities/typeguards"
 import { DefaultData } from "types"
 

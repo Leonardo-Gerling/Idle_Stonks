@@ -4,6 +4,12 @@ export type ItemName = typeof items[number]
 
 export type ShopItemCounts = {[key in ItemName]: number}
 
+export type ShopItemList = [
+    ["Farmer", number],
+    ["Backyard Tree", number],
+    ["Apple Farm", number]
+]
+
 export type DefaultData = {
     "apples": number,
     "counts": ShopItemCounts,
