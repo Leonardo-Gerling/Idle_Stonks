@@ -10,7 +10,7 @@ interface InnerTileProps {
 function previousItemBought(shopItem: ShopItem, counts: ShopItemCounts): boolean {
     const countsList = Object.entries(counts) as ShopItemList
 
-    let idx: number = 0
+    let idx = 0
 
     for (let i = 0; i < countsList.length; i++) {
         const itemName = countsList[i][0]
