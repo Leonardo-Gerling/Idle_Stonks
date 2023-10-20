@@ -10,7 +10,7 @@ export default function TreeSection(): ReactElement {
     useAppleGame()
 
     return (
-        <div aria-label="Tree Section" className="select-none flex flex-col mx-auto w-full h-[35rem] p-[2rem] items-center">
+        <div aria-label="Tree Section" className="select-none flex flex-col mx-auto w-full h-[32rem] p-4 items-center">
             <div className="w-full h-full">
                 <Image
                     src="/apple_tree.png"
