@@ -11,14 +11,15 @@ export default function Shop(): ReactElement {
     const [collapsed, setCollapsed] = useState(false)
 
     return (
-        <section aria-label="shop" className={`transform-transition ease-in-out duration-700 absolute flex flex-row top-1/2 -translate-y-1/2 h-[25rem] pointer-events-none  ${collapsed ? "translate-x-[-10rem]" : ""}`}>  
-            <div className="flex flex-col w-[10rem] justify-center items-center pointer-events-auto">
-                <div className="flex flex-row justify-around items-center w-full bg-green-400 h-[5rem] rounded-tr-lg"> 
+        <section aria-label="shop" className={`transform-transition ease-in-out duration-700 absolute flex flex-row top-1/2 -translate-y-1/2 h-[30rem] z-20 pointer-events-none  ${collapsed ? "translate-x-[-17.5rem]" : ""}`}>  
+            <div className="flex flex-col w-[17.5rem]  justify-center items-center pointer-events-auto">
+
+                <div className="flex flex-row flex-1 justify-around items-center w-full bg-green-500  rounded-tr-lg"> 
                     <button onClick={() => setShowShopView(true)}>Shop</button>
                     <button onClick={() => setShowShopView(false)}>Stats</button>
                 </div>
 
-                <div className="bg-amber-700 h-[20rem] w-full rounded-br-lg">
+                <div className="bg-brown-700 w-[17.5rem] flex-[5] rounded-br-lg text-white overflow-auto">
                     {showShopView ? <ShopView /> : <StatsView />}
                 </div>
             </div>
