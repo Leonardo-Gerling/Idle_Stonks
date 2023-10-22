@@ -5,9 +5,10 @@ import type { ShopItemCounts, ShopItem, DefaultData } from "types"
 
 
 const defaultCounts: ShopItemCounts = {
-    "Farmer": 0,
-    "Backyard Tree": 0,
-    "Apple Farm": 0
+    "Apple Farmer": 0,
+    "Apple Tree": 0,
+    "Apple Farm": 0,
+    "Apple Factory": 0,
 } as const
 
 const ShopContext = createContext<{

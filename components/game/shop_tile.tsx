@@ -33,9 +33,11 @@ interface ShopTileProps {
 export default function ShopTile({ shopItem }: ShopTileProps): ReactElement {
     const {counts, apples, setApples, incrementItem} = useContext(ShopContext)
 
+    const name = shopItem.itemName
+
     if (!previousItemBought(shopItem, counts)) {
         return (
-            <div className="flex justify-center items-center h-24 w-full">
+            <div className="flex justify-center items-center h-24 w-full shop-gradient">
                 <p aria-label="Hidden Item">
                     ???
                 </p>
@@ -44,16 +46,22 @@ export default function ShopTile({ shopItem }: ShopTileProps): ReactElement {
     } 
 
     return (
-        <div className="flex justify-center items-center h-24 w-full">
-            <button aria-label={`Buy ${shopItem.itemName}`} onClick={() => { 
-                if (apples >= shopItem.getPrice(counts[shopItem.itemName])) {
-                    setApples(apples - shopItem.getPrice(counts[shopItem.itemName]))
+        <button 
+            aria-label={`Buy ${name}`} 
+            className="flex flex-row justify-between items-center px-2 h-24 w-full shop-gradient"
+            onClick={() => { 
+                if (apples >= shopItem.getPrice(counts[name])) {
+                    setApples(apples - shopItem.getPrice(counts[name]))
                     incrementItem(shopItem, 1)
-                }
-            }}>
-                {shopItem.itemName} costs {shopItem.getPrice(counts[shopItem.itemName])}. You currently have {counts[shopItem.itemName]}.
-            </button>
-        </div>
+                }}
+        }>
+            <div className="flex flex-row items-center gap-1">
+                <p className="text-2xl">{shopItem.emoji}</p>
+                <p className="whitespace-nowrap">{name}</p>
+            </div>
+
+            <p className="font-medium">🍎{shopItem.getPrice(counts[name])}</p>
+        </button>
     )
 
     

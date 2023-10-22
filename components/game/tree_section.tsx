@@ -10,21 +10,20 @@ export default function TreeSection(): ReactElement {
     useAppleGame()
 
     return (
-        <div aria-label="Tree Section" className="select-none flex flex-col mx-auto w-full h-[32rem] p-8 items-center">
-            <div className="w-full h-full">
+        <section aria-label="Tree Section" className="select-none flex flex-col mx-auto w-full h-[32rem] p-8 items-center">
+            <button className="w-full h-full" onClick={() => setApples(apples + changePerClick + 1000)}>
                 <Image
                     src="/apple_tree.png"
                     width={512}
                     height={512}
                     priority={true}
                     alt="Apple Tree"
-                    onClick={() => setApples(apples + changePerClick + 1000)}
-                    className="cursor-pointer undraggable h-full w-full object-bottom object-contain"
+                    className="undraggable h-full w-full object-bottom object-contain"
                 />
-            </div>
+            </button>
             
             <p className="text-white bg-green-500 mt-10 text-center text-3xl py-2 px-4 rounded-3xl">{Math.floor(apples).toFixed(0)} Apples</p>
-        </div>
+        </section>
     )
 }
 

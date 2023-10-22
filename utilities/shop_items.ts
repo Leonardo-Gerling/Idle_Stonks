@@ -25,8 +25,8 @@ export class ShopItem {
     }
 }
 
-export const farmer = new ShopItem({
-    itemName: "Farmer",
+const appleFarmer = new ShopItem({
+    itemName: "Apple Farmer",
     initialPrice: 15,
     countMultiplier: 5,
     changePerClick: 0.05,
@@ -34,8 +34,8 @@ export const farmer = new ShopItem({
     emoji:"🧑‍🌾"
 })
 
-export const backyardTree = new ShopItem({
-    itemName: "Backyard Tree",
+const appleTree = new ShopItem({
+    itemName: "Apple Tree",
     initialPrice: 300,
     countMultiplier: 20,
     changePerClick: 0.3,
@@ -43,7 +43,7 @@ export const backyardTree = new ShopItem({
     emoji:"🌳"
 })
 
-export const appleFarm = new ShopItem({
+const appleFarm = new ShopItem({
     itemName: "Apple Farm",
     initialPrice: 7000,
     countMultiplier: 300,
@@ -51,3 +51,16 @@ export const appleFarm = new ShopItem({
     changePerSecond: 50,
     emoji:"🏡"
 })
+
+const appleFactory = new ShopItem({
+    itemName: "Apple Factory",
+    initialPrice: 25000,
+    countMultiplier: 1200,
+    changePerClick: 7,
+    changePerSecond: 200,
+    emoji:"🏭"
+})
+
+
+const shopItems = [appleFarmer, appleTree, appleFarm, appleFactory]
+export default shopItems
