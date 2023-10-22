@@ -13,23 +13,27 @@ const defaultCounts: ShopItemCounts = {
 
 const ShopContext = createContext<{
     counts: ShopItemCounts, 
-    apples: number,
+    currentApples: number,
+    cumulApples: number,
     changePerSecond: number,
     changePerClick: number,
     importLoaded: boolean,
     incrementItem: (item: ShopItem, num: number) => void,
-    setApples: (apples: number) => void,
+    setCurrentApples: (currentApples: number) => void,
+    setCumulApples: (cumulApples: number) => void,
     setImportLoaded: (loaded: boolean) => void,
     fromJSON: (data: DefaultData) => void,
     updateDataCookie: () => void
 }>({
     counts: defaultCounts,
-    apples: 0,
+    currentApples: 0,
+    cumulApples: 0,
     changePerSecond: 0,
     changePerClick: 1,
     importLoaded: true,
     incrementItem: () => {},
-    setApples: () => {},
+    setCurrentApples: () => {},
+    setCumulApples: () => {},
     setImportLoaded: () => {},
     fromJSON: () => {},
     updateDataCookie: () => {}
@@ -37,9 +41,12 @@ const ShopContext = createContext<{
 
 export const ShopProvider = ({children}: {children: ReactNode}) => {
     const [counts, setCounts] = useState(defaultCounts)
-    const [apples, setApples] = useState(0)
+    const [currentApples, setCurrentApples] = useState(0)
+    const [cumulApples, setCumulApples] = useState(0)
+
     const [changePerSecond, setChangePerSecond] = useState(0)
     const [changePerClick, setChangePerClick] = useState(1)
+
     const [importLoaded, setImportLoaded] = useState(true)
 
     const incrementItem = (item: ShopItem, num: number) => {
@@ -51,7 +58,8 @@ export const ShopProvider = ({children}: {children: ReactNode}) => {
 
     const fromJSON = (data: DefaultData) => {
         setCounts(data.counts)
-        setApples(data.apples)
+        setCurrentApples(data.currentApples)
+        setCumulApples(data.cumulApples)
         setChangePerClick(data.changePerClick)
         setChangePerSecond(data.changePerSecond)
 
@@ -60,7 +68,8 @@ export const ShopProvider = ({children}: {children: ReactNode}) => {
 
     const updateDataCookie = () => {
         const saveData: DefaultData = {
-            "apples": apples,
+            "currentApples": currentApples,
+            "cumulApples": cumulApples,
             "counts": counts,
             "changePerClick": changePerClick,
             "changePerSecond": changePerSecond
@@ -72,7 +81,7 @@ export const ShopProvider = ({children}: {children: ReactNode}) => {
     }
 
     return (
-        <ShopContext.Provider value={{ counts, apples, changePerClick, changePerSecond, importLoaded, incrementItem, setApples, setImportLoaded, fromJSON, updateDataCookie }}>
+        <ShopContext.Provider value={{ counts, currentApples, cumulApples, changePerClick, changePerSecond, importLoaded, incrementItem, setCurrentApples, setCumulApples, setImportLoaded, fromJSON, updateDataCookie }}>
             {children}
         </ShopContext.Provider>
     )

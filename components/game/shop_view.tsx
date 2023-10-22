@@ -5,7 +5,7 @@ import shopItems from "@utilities/shop_items"
 import ShopContext from "@utilities/shop_context"
 
 export default function ShopView(): ReactElement {
-    const {apples} = useContext(ShopContext)
+    const {currentApples} = useContext(ShopContext)
 
     return (
         <div aria-label="buy-view" className="flex flex-col h-full w-full justify-start">
@@ -13,7 +13,7 @@ export default function ShopView(): ReactElement {
                 {shopItems.map((shopItem) => <ShopTile shopItem={shopItem} key={`${shopItem.itemName} ShopTile`} />)}
             </div>  
             <div className="flex flex-1 justify-center items-center text-lg font-medium bg-brown-800">
-                <p>🍎{Math.floor(apples)}</p>
+                <p>🍎{Math.floor(currentApples)}</p>
             </div>
         </div>
     )

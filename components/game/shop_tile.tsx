@@ -31,11 +31,11 @@ interface ShopTileProps {
 }
 
 export default function ShopTile({ shopItem }: ShopTileProps): ReactElement {
-    const {counts, apples, setApples, incrementItem} = useContext(ShopContext)
+    const {counts, currentApples, cumulApples, setCurrentApples, incrementItem} = useContext(ShopContext)
 
     const name = shopItem.itemName
 
-    if (!previousItemBought(shopItem, counts)) {
+    if (!previousItemBought(shopItem, counts) && cumulApples*2 < shopItem.getPrice(counts[name])) {
         return (
             <div className="flex justify-center items-center h-24 w-full shop-gradient">
                 <p aria-label="Hidden Item">
@@ -50,8 +50,8 @@ export default function ShopTile({ shopItem }: ShopTileProps): ReactElement {
             aria-label={`Buy ${name}`} 
             className="flex flex-row justify-between items-center px-2 h-24 w-full shop-gradient"
             onClick={() => { 
-                if (apples >= shopItem.getPrice(counts[name])) {
-                    setApples(apples - shopItem.getPrice(counts[name]))
+                if (currentApples >= shopItem.getPrice(counts[name])) {
+                    setCurrentApples(currentApples - shopItem.getPrice(counts[name]))
                     incrementItem(shopItem, 1)
                 }}
         }>

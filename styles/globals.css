@@ -4,6 +4,7 @@
 
 button {
     -webkit-tap-highlight-color: transparent;
+    outline: none;
 }
 
 .undraggable {
@@ -34,12 +35,29 @@ button {
 }
 
 .shop-gradient {
-    background: rgba(104, 68, 32, 1);
+    background: linear-gradient(
+                    180deg,
+                    rgba(104, 68, 32, 1) 0%,
+                    rgba(104, 68, 32, 1) 90%,
+                    rgba(139, 90, 43, 1) 100%
+                )
+}
+
+.shop-gradient + .shop-gradient {
     background: linear-gradient(
                     180deg,
                     rgba(139, 90, 43, 1) 0%,
                     rgba(104, 68, 32, 1) 10%,
                     rgba(104, 68, 32, 1) 90%,
                     rgba(139, 90, 43, 1) 100%
+                )
+}
+
+.shop-gradient:nth-last-child(-n + 1) {
+    background: linear-gradient(
+                    180deg,
+                    rgba(139, 90, 43, 1) 0%,
+                    rgba(104, 68, 32, 1) 10%,
+                    rgba(104, 68, 32, 1) 100%
                 )
 }

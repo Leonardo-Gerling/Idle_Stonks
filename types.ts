@@ -12,7 +12,8 @@ export type ShopItemList = [
 ]
 
 export type DefaultData = {
-    "apples": number,
+    "currentApples": number,
+    "cumulApples": number,
     "counts": ShopItemCounts,
     "changePerClick": number,
     "changePerSecond": number

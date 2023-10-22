@@ -5,13 +5,19 @@ import ShopContext from "@utilities/shop_context"
 import useAppleGame from "@utilities/use_apple_game"
 
 export default function TreeSection(): ReactElement {
-    const {apples, changePerClick, setApples} = useContext(ShopContext)
+    const {currentApples, cumulApples, changePerClick, setCurrentApples, setCumulApples} = useContext(ShopContext)
 
     useAppleGame()
 
     return (
         <section aria-label="Tree Section" className="select-none flex flex-col mx-auto w-full h-[32rem] p-8 items-center">
-            <button className="w-full h-full" onClick={() => setApples(apples + changePerClick + 1000)}>
+            <button 
+                className="w-full h-full" 
+                onClick={() => {
+                    setCurrentApples(currentApples + changePerClick + 1000)
+                    setCumulApples(cumulApples + changePerClick + 1000)
+                }}
+            >
                 <Image
                     src="/apple_tree.png"
                     width={512}
@@ -22,7 +28,7 @@ export default function TreeSection(): ReactElement {
                 />
             </button>
             
-            <p className="text-white bg-green-500 mt-10 text-center text-3xl py-2 px-4 rounded-3xl">{Math.floor(apples).toFixed(0)} Apples</p>
+            <p className="text-white bg-green-500 mt-10 text-center text-3xl py-2 px-4 rounded-3xl">{Math.floor(currentApples).toFixed(0)} Apples</p>
         </section>
     )
 }

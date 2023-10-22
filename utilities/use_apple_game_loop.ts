@@ -4,16 +4,16 @@ import ShopContext from "@utilities/shop_context"
 import useGameLoop from "@utilities/use_game_loop"
 
 export default function useAppleGameLoop(): void {
-    const {apples, changePerSecond, setApples} = useContext(ShopContext)
+    const {currentApples, changePerSecond, setCurrentApples} = useContext(ShopContext)
     
     
-    const applesStore = useRef(apples)
+    const currentApplesStore = useRef(currentApples)
     const changePerSecondStore = useRef(changePerSecond)
 
     useEffect(() => {
         changePerSecondStore.current = changePerSecond
-        applesStore.current = apples
-    }, [changePerSecond, apples])
+        currentApplesStore.current = currentApples
+    }, [changePerSecond, currentApples])
 
     const last = useRef(0)
     const now = useRef(0)
@@ -24,7 +24,7 @@ export default function useAppleGameLoop(): void {
         diff.current = now.current - last.current
         
         if (diff.current >= 200) {
-            setApples(applesStore.current + (changePerSecondStore.current * diff.current / 1000))
+            setCurrentApples(currentApplesStore.current + (changePerSecondStore.current * diff.current / 1000))
             last.current = now.current
         }
     })
