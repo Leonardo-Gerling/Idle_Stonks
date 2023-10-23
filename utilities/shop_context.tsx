@@ -15,12 +15,16 @@ const ShopContext = createContext<{
     counts: ShopItemCounts, 
     currentApples: number,
     cumulApples: number,
+    collapsedShop: boolean,
+    collapsedSettings: boolean,
     changePerSecond: number,
     changePerClick: number,
     importLoaded: boolean,
     incrementItem: (item: ShopItem, num: number) => void,
     setCurrentApples: (currentApples: number) => void,
     setCumulApples: (cumulApples: number) => void,
+    setCollapsedShop: (collapsed: boolean) => void,
+    setCollapsedSettings: (collapsed: boolean) => void,
     setImportLoaded: (loaded: boolean) => void,
     fromJSON: (data: DefaultData) => void,
     updateDataCookie: () => void
@@ -31,9 +35,13 @@ const ShopContext = createContext<{
     changePerSecond: 0,
     changePerClick: 1,
     importLoaded: true,
+    collapsedShop: true,
+    collapsedSettings: true,
     incrementItem: () => {},
     setCurrentApples: () => {},
     setCumulApples: () => {},
+    setCollapsedShop: () => {},
+    setCollapsedSettings: () => {},
     setImportLoaded: () => {},
     fromJSON: () => {},
     updateDataCookie: () => {}
@@ -46,6 +54,9 @@ export const ShopProvider = ({children}: {children: ReactNode}) => {
 
     const [changePerSecond, setChangePerSecond] = useState(0)
     const [changePerClick, setChangePerClick] = useState(1)
+
+    const [collapsedShop, setCollapsedShop] = useState(true)
+    const [collapsedSettings, setCollapsedSettings] = useState(true)
 
     const [importLoaded, setImportLoaded] = useState(true)
 
@@ -81,7 +92,7 @@ export const ShopProvider = ({children}: {children: ReactNode}) => {
     }
 
     return (
-        <ShopContext.Provider value={{ counts, currentApples, cumulApples, changePerClick, changePerSecond, importLoaded, incrementItem, setCurrentApples, setCumulApples, setImportLoaded, fromJSON, updateDataCookie }}>
+        <ShopContext.Provider value={{ counts, currentApples, cumulApples, collapsedShop, collapsedSettings, changePerClick, changePerSecond, importLoaded, incrementItem, setCurrentApples, setCumulApples, setCollapsedShop, setCollapsedSettings, setImportLoaded, fromJSON, updateDataCookie }}>
             {children}
         </ShopContext.Provider>
     )

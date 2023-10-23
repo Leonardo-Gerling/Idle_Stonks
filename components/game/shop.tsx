@@ -1,19 +1,20 @@
-import { ReactElement, useState } from "react"
+import { ReactElement, useState, useContext } from "react"
 
 import ShopButton from "@components/game/shop_button"
 import ShopView from "@components/game/shop_view"
 import StatsView from "@components/game/stats_view"
 import ShopArrow from "@svgs/shop_arrow"
+import ShopContext from "@utilities/shop_context"
 
 
 export default function Shop(): ReactElement {
+    const { collapsedShop, setCollapsedShop } = useContext(ShopContext)
+
     const [showShopView, setShowShopView] = useState(true)
-    const [collapsed, setCollapsed] = useState(false)
 
     return (
-        <>
-            <div className={`absolute inset-0 h-screen w-screen z-10 backdrop-blur-[2px] transition-opacity ease-in-out duration-700 ${collapsed ? "opacity-0 pointer-events-none" : "opacity-100"}`} /> 
-            <section aria-label="shop" className={`transform-transition ease-in-out duration-700 absolute flex flex-row top-1/2 -translate-y-1/2 h-[30rem] z-20 pointer-events-none  ${collapsed ? "translate-x-[-17.5rem]" : ""}`}>  
+        <>            
+            <section aria-label="shop" className={`transform-transition ease-in-out duration-700 absolute flex flex-row top-1/2 -translate-y-1/2 h-[30rem] z-20 pointer-events-none  ${collapsedShop ? "translate-x-[-17.5rem]" : ""}`}>  
                 <div className="flex flex-col w-[17.5rem]  justify-center items-center pointer-events-auto">
 
                     <div className="flex flex-row flex-1 justify-around items-center w-full text-xl"> 
@@ -27,8 +28,8 @@ export default function Shop(): ReactElement {
                 </div>
 
                 <div className="flex flex-col justify-center h-full pointer-events-none">
-                    <button className="pointer-events-auto unselectable" onClick={() => setCollapsed(!collapsed)}>
-                        <ShopArrow width={50} className={`transform-transition ease-in-out duration-700 ${collapsed ? "rotate-180" : ""}`} />
+                    <button className="pointer-events-auto unselectable" onClick={() => setCollapsedShop(!collapsedShop)}>
+                        <ShopArrow width={50} className={`transform-transition ease-in-out duration-700 ${collapsedShop ? "rotate-180" : ""}`} />
                     </button>
                 </div>
             </section>
