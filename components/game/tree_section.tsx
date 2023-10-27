@@ -32,5 +32,3 @@ export default function TreeSection(): ReactElement {
         </section>
     )
 }
-
-// <a href="https://www.flaticon.com/free-icons/apple-tree" title="apple tree icons">Apple tree icons created by Freepik - Flaticon</a>  (Attribution vom Apple Tree Icon)

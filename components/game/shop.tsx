@@ -29,7 +29,7 @@ export default function Shop(): ReactElement {
 
                 <div className="flex flex-col justify-center h-full pointer-events-none">
                     <button className="pointer-events-auto unselectable" onClick={() => setCollapsedShop(!collapsedShop)}>
-                        <ShopArrow width={50} className={`transform-transition ease-in-out duration-700 ${collapsedShop ? "rotate-180" : ""}`} />
+                        <ShopArrow width={50} height={50} className={`transform-transition ease-in-out duration-700 ${collapsedShop ? "rotate-180" : ""}`} />
                     </button>
                 </div>
             </section>

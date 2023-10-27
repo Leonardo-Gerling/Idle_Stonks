@@ -3,7 +3,7 @@ import { ReactElement } from "react"
 import Shop from "@components/game/shop"
 import TreeSection from "@components/game/tree_section"
 import BottomSection from "@components/game/bottom_section"
-import Settings from "@components/game/settings"
+import Info from "@components/game/info"
 import BlurScreen from "@components/game/blur_screen"
 
 export default function Game(): ReactElement {
@@ -14,7 +14,7 @@ export default function Game(): ReactElement {
                 <TreeSection />
                 <BottomSection />
             </div>
-            <Settings />
+            <Info />
             <BlurScreen />
         </div>
     )

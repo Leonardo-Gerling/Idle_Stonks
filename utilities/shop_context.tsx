@@ -16,7 +16,7 @@ const ShopContext = createContext<{
     currentApples: number,
     cumulApples: number,
     collapsedShop: boolean,
-    collapsedSettings: boolean,
+    collapsedInfo: boolean,
     changePerSecond: number,
     changePerClick: number,
     importLoaded: boolean,
@@ -24,7 +24,7 @@ const ShopContext = createContext<{
     setCurrentApples: (currentApples: number) => void,
     setCumulApples: (cumulApples: number) => void,
     setCollapsedShop: (collapsed: boolean) => void,
-    setCollapsedSettings: (collapsed: boolean) => void,
+    setCollapsedInfo: (collapsed: boolean) => void,
     setImportLoaded: (loaded: boolean) => void,
     fromJSON: (data: DefaultData) => void,
     updateDataCookie: () => void
@@ -36,12 +36,12 @@ const ShopContext = createContext<{
     changePerClick: 1,
     importLoaded: true,
     collapsedShop: true,
-    collapsedSettings: true,
+    collapsedInfo: true,
     incrementItem: () => {},
     setCurrentApples: () => {},
     setCumulApples: () => {},
     setCollapsedShop: () => {},
-    setCollapsedSettings: () => {},
+    setCollapsedInfo: () => {},
     setImportLoaded: () => {},
     fromJSON: () => {},
     updateDataCookie: () => {}
@@ -56,7 +56,7 @@ export const ShopProvider = ({children}: {children: ReactNode}) => {
     const [changePerClick, setChangePerClick] = useState(1)
 
     const [collapsedShop, setCollapsedShop] = useState(true)
-    const [collapsedSettings, setCollapsedSettings] = useState(true)
+    const [collapsedInfo, setCollapsedInfo] = useState(true)
 
     const [importLoaded, setImportLoaded] = useState(true)
 
@@ -92,7 +92,7 @@ export const ShopProvider = ({children}: {children: ReactNode}) => {
     }
 
     return (
-        <ShopContext.Provider value={{ counts, currentApples, cumulApples, collapsedShop, collapsedSettings, changePerClick, changePerSecond, importLoaded, incrementItem, setCurrentApples, setCumulApples, setCollapsedShop, setCollapsedSettings, setImportLoaded, fromJSON, updateDataCookie }}>
+        <ShopContext.Provider value={{ counts, currentApples, cumulApples, collapsedShop, collapsedInfo, changePerClick, changePerSecond, importLoaded, incrementItem, setCurrentApples, setCumulApples, setCollapsedShop, setCollapsedInfo, setImportLoaded, fromJSON, updateDataCookie }}>
             {children}
         </ShopContext.Provider>
     )
