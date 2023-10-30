@@ -21,7 +21,6 @@
       "@utilities/*": ["utilities/*"],
       "@public/*": ["public/*"],
       "@styles/*": ["styles/*"],
-      "@svgs/*": ["svgs/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

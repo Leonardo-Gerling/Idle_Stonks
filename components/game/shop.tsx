@@ -1,9 +1,9 @@
 import { ReactElement, useState, useContext } from "react"
+import { ChevronLeft } from "@geist-ui/icons"
 
 import ShopButton from "@components/game/shop_button"
 import ShopView from "@components/game/shop_view"
 import StatsView from "@components/game/stats_view"
-import ShopArrow from "@svgs/shop_arrow"
 import ShopContext from "@utilities/shop_context"
 
 
@@ -29,7 +29,7 @@ export default function Shop(): ReactElement {
 
                 <div className="flex flex-col justify-center h-full pointer-events-none">
                     <button className="pointer-events-auto unselectable" onClick={() => setCollapsedShop(!collapsedShop)}>
-                        <ShopArrow width={50} height={50} className={`transform-transition ease-in-out duration-700 ${collapsedShop ? "rotate-180" : ""}`} />
+                        <ChevronLeft size={60} className={`transform-transition ease-in-out duration-700 ${collapsedShop ? "rotate-180" : ""}`} />
                     </button>
                 </div>
             </section>
