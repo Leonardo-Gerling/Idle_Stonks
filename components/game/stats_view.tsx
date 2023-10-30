@@ -1,4 +1,5 @@
 import { ReactElement, useContext } from "react"
+import { abbreviateNumber } from "js-abbreviation-number"
 
 import shopItems from "@utilities/shop_items"
 import StatTile from "@components/game/stat_tile"
@@ -13,7 +14,7 @@ export default function StatsView(): ReactElement {
                 {shopItems.filter((shopItem) => counts[shopItem.itemName] > 0).map((shopItem) => <StatTile shopItem={shopItem} key={`${shopItem.itemName} StatTile`} />)}
             </div>
             <div className="flex flex-1 justify-center items-center bg-brown-800 text-lg font-medium">
-                <p>🍎{changePerSecond.toFixed(2)}/s</p>
+                <p>🍎{abbreviateNumber(parseFloat(changePerSecond.toFixed(2)))}/s</p>
             </div>
         </div>
     )

@@ -1,4 +1,5 @@
 import { ReactElement, useContext } from "react"
+import { abbreviateNumber } from "js-abbreviation-number"
 
 import type { ShopItem, ShopItemCounts, ShopItemList } from "types"
 import ShopContext from "@utilities/shop_context"
@@ -60,7 +61,7 @@ export default function ShopTile({ shopItem }: ShopTileProps): ReactElement {
                 <p className="whitespace-nowrap">{name}</p>
             </div>
 
-            <p className="font-medium">🍎{shopItem.getPrice(counts[name])}</p>
+            <p className="font-medium">🍎{abbreviateNumber(shopItem.getPrice(counts[name]))}</p>
         </button>
     )
 

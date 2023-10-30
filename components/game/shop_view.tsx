@@ -1,4 +1,5 @@
 import { ReactElement, useContext } from "react"
+import { abbreviateNumber } from "js-abbreviation-number"
 
 import ShopTile from "@components/game/shop_tile"
 import shopItems from "@utilities/shop_items"
@@ -13,7 +14,7 @@ export default function ShopView(): ReactElement {
                 {shopItems.map((shopItem) => <ShopTile shopItem={shopItem} key={`${shopItem.itemName} ShopTile`} />)}
             </div>  
             <div className="flex flex-1 justify-center items-center text-lg font-medium bg-brown-800">
-                <p>🍎{Math.floor(currentApples)}</p>
+                <p>🍎{abbreviateNumber(Math.floor(currentApples))}</p>
             </div>
         </div>
     )

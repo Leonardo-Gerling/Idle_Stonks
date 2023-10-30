@@ -1,5 +1,6 @@
 import { ReactElement, useContext } from "react"
 import Image from "next/image"
+import { abbreviateNumber } from "js-abbreviation-number"
 
 import ShopContext from "@utilities/shop_context"
 import useAppleGame from "@utilities/use_apple_game"
@@ -14,8 +15,8 @@ export default function TreeSection(): ReactElement {
             <button 
                 className="w-full h-full" 
                 onClick={() => {
-                    setCurrentApples(currentApples + changePerClick + 1000)
-                    setCumulApples(cumulApples + changePerClick + 1000)
+                    setCurrentApples(currentApples + changePerClick + 100000)
+                    setCumulApples(cumulApples + changePerClick + 100000)
                 }}
             >
                 <Image
@@ -28,7 +29,7 @@ export default function TreeSection(): ReactElement {
                 />
             </button>
             
-            <p className="text-white bg-green-500 mt-10 text-center text-3xl py-2 px-4 rounded-3xl">{Math.floor(currentApples).toFixed(0)} Apples</p>
+            <p className="text-white bg-green-500 mt-10 text-center text-3xl py-2 px-4 rounded-3xl">{abbreviateNumber(Math.floor(currentApples))} Apples</p>
         </section>
     )
 }

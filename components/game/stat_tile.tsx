@@ -1,4 +1,5 @@
 import { ReactElement, useContext } from "react"
+import { abbreviateNumber } from "js-abbreviation-number"
 
 import ShopContext from "@utilities/shop_context"
 import { ShopItem } from "types"
@@ -22,7 +23,7 @@ export default function StatTile({ shopItem }: StatTileProps): ReactElement {
 
             <div className="flex flex-col justify-evenly items-end h-full w-full font-medium">
                 <p>x{counts[name]}</p>
-                <p>🍎{fixNumber(shopItem.changePerSecond * counts[name])}/s</p>
+                <p>🍎{abbreviateNumber(parseFloat((shopItem.changePerSecond * counts[name]).toFixed(2)))}/s</p>
             </div>
         </div>
     )
