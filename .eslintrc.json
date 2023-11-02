@@ -1,0 +1,19 @@
+{
+    "root": true,
+    "extends": [
+        "plugin:prettier/recommended",
+        "plugin:tailwindcss/recommended",
+        "next/core-web-vitals"
+    ],
+    "rules": {
+        "prettier/prettier": [
+            "error",
+            {
+                "singleQuote": false,
+                "semi": true,
+                "tabWidth": 4,
+                "useTabs": true
+            }
+        ]
+    }
+}

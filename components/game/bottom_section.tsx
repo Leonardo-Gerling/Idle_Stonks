@@ -1,25 +1,48 @@
-import { ReactElement, useContext } from "react"
-import { Download, Upload, Save } from "@geist-ui/icons"
+import { ReactElement, useContext } from "react";
+import { Download, Upload, Save } from "@geist-ui/icons";
 
-import SaveButton from "@components/game/save_button"
-import ShopContext from "@utilities/shop_context"
-import { exportSave, importSave } from "@utilities/saves"
+import SaveButton from "@components/game/save_button";
+import ShopContext from "@utilities/shop_context";
+import { exportSave, importSave } from "@utilities/saves";
 
-export default function BottomSection(): ReactElement {
-    const {fromJSON, updateDataCookie} = useContext(ShopContext)
+export default function BottomSection({
+	className,
+}: {
+	className?: string;
+}): ReactElement {
+	const { fromJSON, updateDataCookie } = useContext(ShopContext);
 
-    return (
-        <section aria-label="bottom-section" className={`absolute bottom-0 w-full`}>
-            <div className="flex flex-row justify-center gap-2 m-2">
-                <SaveButton icon={<Download size={20} />} text="Download" ariaLabel="Export save" customOnClick={() => {
-                    updateDataCookie()
-                    exportSave()
-                }} />
+	return (
+		<section
+			aria-label="bottom-section"
+			className={
+				"flex flex-row justify-evenly xs:justify-center items-end xs:gap-2 pb-4 h-full w-full " +
+				className
+			}
+		>
+			<SaveButton
+				icon={<Download size={20} />}
+				text="Download"
+				ariaLabel="Export save"
+				customOnClick={() => {
+					updateDataCookie();
+					exportSave();
+				}}
+			/>
 
-                <SaveButton icon={<Save size={20} />} text="Save" ariaLabel="Save" customOnClick={() => updateDataCookie()} />
-                
-                <SaveButton icon={<Upload size={20} />} text="Upload" ariaLabel="Import save" customOnClick={() => importSave(fromJSON)} />
-            </div>
-        </section>
-    )
+			<SaveButton
+				icon={<Save size={20} />}
+				text="Save"
+				ariaLabel="Save"
+				customOnClick={() => updateDataCookie()}
+			/>
+
+			<SaveButton
+				icon={<Upload size={20} />}
+				text="Upload"
+				ariaLabel="Import save"
+				customOnClick={() => importSave(fromJSON)}
+			/>
+		</section>
+	);
 }

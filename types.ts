@@ -1,4 +1,4 @@
-const items = ["Apple Farmer", "Apple Tree", "Apple Farm", "Apple Factory"] as const
+const items = ["Apple Farmer", "Apple Tree", "Apple Farm", "Apple Factory", "Apple Laboratory"] as const
 
 export type ItemName = typeof items[number]
 
@@ -8,7 +8,8 @@ export type ShopItemList = [
     ["Apple Farmer", number],
     ["Apple Tree", number],
     ["Apple Farm", number],
-    ["Apple Factory", number]
+    ["Apple Factory", number],
+    ["Apple Laboratory", number]
 ]
 
 export type DefaultData = {

@@ -1,11 +1,18 @@
-import { ReactElement, useContext } from "react"
+import { ReactElement, useContext } from "react";
 
-import ShopContext from "@utilities/shop_context"
+import ShopContext from "@utilities/shop_context";
 
 export default function BlurScreen(): ReactElement {
-    const { collapsedShop, collapsedInfo } = useContext(ShopContext)
+	const { collapsedShop, collapsedInfo } = useContext(ShopContext);
 
-    return (
-        <div aria-label="blur-screen" className={`absolute inset-0 h-screen w-screen z-10 backdrop-blur-[2px] transition-opacity ease-in-out duration-700 ${collapsedShop && collapsedInfo ? "opacity-0 pointer-events-none" : "opacity-100"}`} />
-    )
+	return (
+		<div
+			aria-label="blur-screen"
+			className={`absolute inset-0 z-10 h-screen w-screen backdrop-blur-[2px] transition-opacity duration-700 ease-in-out ${
+				collapsedShop && collapsedInfo
+					? "pointer-events-none opacity-0"
+					: "opacity-100"
+			}`}
+		/>
+	);
 }

@@ -1,23 +1,31 @@
-import { ReactElement, useContext } from "react"
-import { abbreviateNumber } from "js-abbreviation-number"
+import { ReactElement, useContext } from "react";
+import { abbreviateNumber } from "js-abbreviation-number";
 
-import ShopTile from "@components/game/shop_tile"
-import shopItems from "@utilities/shop_items"
-import ShopContext from "@utilities/shop_context"
+import ShopTile from "@components/game/shop_tile";
+import shopItems from "@utilities/shop_items";
+import ShopContext from "@utilities/shop_context";
 
 export default function ShopView(): ReactElement {
-    const {currentApples} = useContext(ShopContext)
+	const { currentApples } = useContext(ShopContext);
 
-    return (
-        <div aria-label="buy-view" className="flex flex-col h-full w-full justify-start">
-            <div className="flex-[5] overflow-y-scroll hidden-scrollbar select-none">
-                {shopItems.map((shopItem) => <ShopTile shopItem={shopItem} key={`${shopItem.itemName} ShopTile`} />)}
-            </div>  
-            <div className="flex flex-1 justify-center items-center text-lg font-medium bg-brown-800">
-                <p>🍎{abbreviateNumber(Math.floor(currentApples))}</p>
-            </div>
-        </div>
-    )
+	return (
+		<div
+			aria-label="shop-view"
+			className="flex h-full w-full flex-col justify-start"
+		>
+			<div className="hidden-scrollbar flex-[5] select-none overflow-y-scroll">
+				{shopItems.map((shopItem) => (
+					<ShopTile
+						shopItem={shopItem}
+						key={`${shopItem.itemName} ShopTile`}
+					/>
+				))}
+			</div>
+			<div className="flex flex-1 items-center justify-center bg-brown-800 text-lg font-medium">
+				<p>🍎{abbreviateNumber(Math.floor(currentApples))}</p>
+			</div>
+		</div>
+	);
 }
 
 //  divide-y divide-dotted

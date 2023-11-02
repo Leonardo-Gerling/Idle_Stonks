@@ -61,6 +61,15 @@ const appleFactory = new ShopItem({
     emoji:"🏭"
 })
 
+const appleLaboratory = new ShopItem({
+    itemName: "Apple Laboratory",
+    initialPrice: 800000,
+    countMultiplier: 30000,
+    changePerClick: 40,
+    changePerSecond: 1600,
+    emoji: "⚗️"
+})
 
-const shopItems = [appleFarmer, appleTree, appleFarm, appleFactory]
+
+const shopItems = [appleFarmer, appleTree, appleFarm, appleFactory, appleLaboratory]
 export default shopItems

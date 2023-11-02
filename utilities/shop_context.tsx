@@ -9,6 +9,7 @@ const defaultCounts: ShopItemCounts = {
     "Apple Tree": 0,
     "Apple Farm": 0,
     "Apple Factory": 0,
+    "Apple Laboratory": 0,
 } as const
 
 const ShopContext = createContext<{
