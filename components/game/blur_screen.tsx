@@ -3,7 +3,12 @@ import { ReactElement, useContext } from "react";
 import ShopContext from "@utilities/shop_context";
 
 export default function BlurScreen(): ReactElement {
-	const { collapsedShop, collapsedInfo } = useContext(ShopContext);
+	const { collapsedShop, collapsedInfo, setCollapsedShop } =
+		useContext(ShopContext);
+
+	if (window.screen.width < 1280) {
+		setCollapsedShop(false);
+	}
 
 	return (
 		<div

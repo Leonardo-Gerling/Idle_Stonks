@@ -13,7 +13,7 @@ export default function ShopView(): ReactElement {
 			aria-label="shop-view"
 			className="flex h-full w-full flex-col justify-start"
 		>
-			<div className="hidden-scrollbar flex-[5] select-none overflow-y-scroll">
+			<div className="hidden-scrollbar flex-[5] select-none overflow-y-scroll sm:text-xl">
 				{shopItems.map((shopItem) => (
 					<ShopTile
 						shopItem={shopItem}
@@ -21,7 +21,7 @@ export default function ShopView(): ReactElement {
 					/>
 				))}
 			</div>
-			<div className="flex flex-1 items-center justify-center bg-brown-800 text-lg font-medium">
+			<div className="flex flex-1 items-center justify-center rounded-br-lg bg-brown-800 text-lg font-medium sm:text-2xl">
 				<p>🍎{abbreviateNumber(Math.floor(currentApples))}</p>
 			</div>
 		</div>

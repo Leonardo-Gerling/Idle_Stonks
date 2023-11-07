@@ -50,7 +50,7 @@ export default function ShopTile({ shopItem }: ShopTileProps): ReactElement {
 		cumulApples * 2 < shopItem.getPrice(counts[name])
 	) {
 		return (
-			<div className="shop-gradient flex h-24 w-full items-center justify-center">
+			<div className="shop-gradient flex h-24 w-full items-center justify-center sm:h-32">
 				<p aria-label="Hidden Item">???</p>
 			</div>
 		);
@@ -58,7 +58,7 @@ export default function ShopTile({ shopItem }: ShopTileProps): ReactElement {
 
 	return (
 		<button
-			className="shop-gradient flex h-24 w-full flex-row items-center justify-between px-2"
+			className="shop-gradient flex h-24 w-full flex-row items-center justify-between px-2 sm:h-32"
 			onClick={() => {
 				if (currentApples >= shopItem.getPrice(counts[name])) {
 					setCurrentApples(
