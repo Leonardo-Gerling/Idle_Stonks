@@ -14,10 +14,18 @@ export default function StatTile({ shopItem }: StatTileProps): ReactElement {
 
 	const name = shopItem.itemName;
 
+	if (counts[name] === 0) {
+		return (
+			<div className="shop-gradient flex h-24 w-full items-center justify-center sm:h-32 3xl:h-52 3xl:text-2xl">
+				<p aria-label="Hidden Item">???</p>
+			</div>
+		);
+	}
+
 	return (
-		<div className="shop-gradient flex h-24 w-full flex-row items-center justify-between px-2">
+		<div className="shop-gradient flex h-24 w-full flex-row items-center justify-between px-2 sm:h-32 3xl:h-52 3xl:text-2xl">
 			<div className="flex w-full flex-row items-center gap-1">
-				<p className="text-2xl">{shopItem.emoji}</p>
+				<p className="text-2xl 3xl:text-4xl">{shopItem.emoji}</p>
 				<p className="whitespace-nowrap">{name}</p>
 			</div>
 
@@ -26,11 +34,7 @@ export default function StatTile({ shopItem }: StatTileProps): ReactElement {
 				<p>
 					🍎
 					{abbreviateNumber(
-						parseFloat(
-							(shopItem.changePerSecond * counts[name]).toFixed(
-								2,
-							),
-						),
+						fixNumber(shopItem.changePerSecond * counts[name]),
 					)}
 					/s
 				</p>

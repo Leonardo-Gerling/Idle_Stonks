@@ -10,6 +10,7 @@ module.exports = {
 		extend: {
 			screens: {
 				xs: "340px",
+				"3xl": "2200px",
 			},
 			colors: {
 				brown: {

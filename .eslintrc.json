@@ -7,13 +7,20 @@
     ],
     "rules": {
         "prettier/prettier": [
-            "error",
+            "warn",
             {
                 "singleQuote": false,
                 "semi": true,
                 "tabWidth": 4,
                 "useTabs": true
             }
-        ]
-    }
+        ],
+        "tailwindcss/no-custom-classname": "off"
+    },
+    "overrides": [
+        {
+            "files": ["*.ts", "*.tsx"],
+            "parser": "@typescript-eslint/parser"
+        }
+    ]
 }

@@ -31,8 +31,8 @@ export default function TreeSection({
 			<button
 				className="flex h-full w-full justify-center"
 				onClick={() => {
-					setCurrentApples(currentApples + changePerClick + 100000);
-					setCumulApples(cumulApples + changePerClick + 100000);
+					setCurrentApples(currentApples + changePerClick);
+					setCumulApples(cumulApples + changePerClick);
 				}}
 			>
 				<Image
@@ -45,7 +45,7 @@ export default function TreeSection({
 				/>
 			</button>
 
-			<p className="mt-10 rounded-3xl bg-green-500 px-4 py-2 text-center text-3xl text-white md:px-8 md:py-4 md:text-4xl">
+			<p className="mt-10 rounded-3xl bg-green-500 px-4 py-2 text-center text-3xl text-white md:px-8 md:py-4 md:text-4xl 3xl:px-12 3xl:py-7 3xl:text-5xl">
 				{abbreviateNumber(Math.floor(currentApples))} Apples
 			</p>
 		</section>

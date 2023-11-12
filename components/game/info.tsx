@@ -12,13 +12,10 @@ export default function Info(): ReactElement {
 			<InfoView />
 
 			<button
-				className="absolute right-5 top-5 h-10 w-10 sm:h-[60px] sm:w-[60px]"
+				className="absolute right-5 top-5 h-10 w-10 sm:h-[60px] sm:w-[60px] 2xl:h-20 2xl:w-20"
 				onClick={() => setCollapsedInfo(false)}
 			>
-				<InfoIcon
-					size={window.screen.width < 640 ? 40 : 60}
-					strokeWidth={2}
-				/>
+				<InfoIcon className="h-full w-full" strokeWidth={2} />
 			</button>
 		</>
 	);

@@ -1,3 +1,3 @@
 export default function fixNumber(num: number) {
-    return num.toFixed(2)
+	return parseFloat(num.toFixed(2));
 }

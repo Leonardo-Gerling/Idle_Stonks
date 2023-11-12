@@ -9,14 +9,16 @@ import BlurScreen from "@components/game/blur_screen";
 export default function Game(): ReactElement {
 	return (
 		<div aria-label="game" className="h-screen w-screen bg-brown-200">
-			<Shop />
-			<section
-				aria-label="mid-section"
-				className="mx-auto flex h-full w-full flex-col items-center"
-			>
-				<TreeSection className="flex-[3]" />
-				<BottomSection className="flex-1" />
-			</section>
+			<div className="h-full w-full xl:flex xl:flex-row xl:items-center">
+				<Shop />
+				<section
+					aria-label="mid-section"
+					className="flex h-full w-full flex-col items-center"
+				>
+					<TreeSection className="flex-[3]" />
+					<BottomSection className="flex-1" />
+				</section>
+			</div>
 			<Info />
 			<BlurScreen />
 		</div>
